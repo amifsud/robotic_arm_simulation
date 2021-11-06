@@ -20,6 +20,13 @@
                 <origin rpy="0 0 0"  xyz="0 0 ${size/2.+width}"/>
                 <material name="${color}"/>
             </visual>
+
+            <collision>
+                <geometry>
+                    <cylinder length="${size}" radius="${width}"/>
+                </geometry>
+                <origin rpy="0 0 0"  xyz="0 0 ${size/2.+width}"/>
+            </collision>
         </link>
 
         <joint name="${name}_rigidity" type="fixed">
@@ -36,6 +43,13 @@
                 <origin rpy="0 0 0" xyz="0 0 0"/>
                 <material name="${color}"/>
             </visual>
+
+            <collision>
+                <geometry>
+                    <sphere radius="${width}"/>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+            </collision>
         </link>
     </xacro:macro>
 

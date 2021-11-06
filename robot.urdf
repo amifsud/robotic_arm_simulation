@@ -18,20 +18,32 @@
       <origin rpy="0 0 0" xyz="0 0 0.4"/>
       <material name="white"/>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.6" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.4"/>
+    </collision>
   </link>
   <joint name="base_rigidity" type="fixed">
     <parent link="base_link"/>
     <child link="connector_base_link"/>
-    <origin xyz="0 0 0.6"/>
+    <origin xyz="0 0 0.7"/>
   </joint>
   <link name="connector_base_link">
     <visual>
       <geometry>
         <sphere radius="0.1"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <material name="white"/>
     </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
   </link>
   <joint name="end_first_link" type="continuous">
     <parent link="connector_base_link"/>
@@ -46,20 +58,32 @@
       <origin rpy="0 0 0" xyz="0 0 0.55"/>
       <material name="black"/>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.9" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.55"/>
+    </collision>
   </link>
   <joint name="first_rigidity" type="fixed">
     <parent link="first_link"/>
     <child link="connector_first_link"/>
-    <origin xyz="0 0 0.9"/>
+    <origin xyz="0 0 1.0"/>
   </joint>
   <link name="connector_first_link">
     <visual>
       <geometry>
         <sphere radius="0.1"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <material name="black"/>
     </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
   </link>
   <joint name="end_other_link" type="continuous">
     <parent link="connector_base_link"/>
@@ -74,25 +98,37 @@
       <origin rpy="0 0 0" xyz="0 0 0.35"/>
       <material name="black"/>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.5" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.35"/>
+    </collision>
   </link>
   <joint name="other_rigidity" type="fixed">
     <parent link="other_link"/>
     <child link="connector_other_link"/>
-    <origin xyz="0 0 0.5"/>
+    <origin xyz="0 0 0.6"/>
   </joint>
   <link name="connector_other_link">
     <visual>
       <geometry>
         <sphere radius="0.1"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <material name="black"/>
     </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
   </link>
   <joint name="end_second_link" type="continuous">
     <parent link="connector_first_link"/>
     <child link="second_link"/>
-    <origin rpy="0. 1.5 0" xyz="0 0 0"/>
+    <origin rpy="0. 3.14 0" xyz="0 0 0"/>
   </joint>
   <link name="second_link">
     <visual>
@@ -102,20 +138,32 @@
       <origin rpy="0 0 0" xyz="0 0 0.4"/>
       <material name="white"/>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.6" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.4"/>
+    </collision>
   </link>
   <joint name="second_rigidity" type="fixed">
     <parent link="second_link"/>
     <child link="connector_second_link"/>
-    <origin xyz="0 0 0.6"/>
+    <origin xyz="0 0 0.7"/>
   </joint>
   <link name="connector_second_link">
     <visual>
       <geometry>
         <sphere radius="0.1"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <material name="white"/>
     </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
   </link>
   <joint name="end_third_link" type="continuous">
     <parent link="connector_second_link"/>
@@ -130,20 +178,32 @@
       <origin rpy="0 0 0" xyz="0 0 0.4"/>
       <material name="black"/>
     </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.6" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.4"/>
+    </collision>
   </link>
   <joint name="third_rigidity" type="fixed">
     <parent link="third_link"/>
     <child link="connector_third_link"/>
-    <origin xyz="0 0 0.6"/>
+    <origin xyz="0 0 0.7"/>
   </joint>
   <link name="connector_third_link">
     <visual>
       <geometry>
         <sphere radius="0.1"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0.1"/>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
       <material name="black"/>
     </visual>
+    <collision>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+    </collision>
   </link>
 </robot>
 
