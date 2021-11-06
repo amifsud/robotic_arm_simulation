@@ -64,6 +64,10 @@
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0.55"/>
     </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+    </inertial>
   </link>
   <joint name="first_rigidity" type="fixed">
     <parent link="first_link"/>
@@ -84,6 +88,10 @@
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+    </inertial>
   </link>
   <joint name="end_other_link" type="continuous">
     <parent link="connector_base_link"/>
@@ -104,6 +112,10 @@
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0.35"/>
     </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+    </inertial>
   </link>
   <joint name="other_rigidity" type="fixed">
     <parent link="other_link"/>
@@ -124,11 +136,15 @@
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+    </inertial>
   </link>
   <joint name="end_second_link" type="continuous">
     <parent link="connector_first_link"/>
     <child link="second_link"/>
-    <origin rpy="0. 3.14 0" xyz="0 0 0"/>
+    <origin rpy="0. 1.5 0" xyz="0 0 0"/>
   </joint>
   <link name="second_link">
     <visual>
@@ -144,6 +160,10 @@
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0.4"/>
     </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+    </inertial>
   </link>
   <joint name="second_rigidity" type="fixed">
     <parent link="second_link"/>
@@ -164,6 +184,10 @@
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+    </inertial>
   </link>
   <joint name="end_third_link" type="continuous">
     <parent link="connector_second_link"/>
@@ -184,6 +208,10 @@
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0.4"/>
     </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+    </inertial>
   </link>
   <joint name="third_rigidity" type="fixed">
     <parent link="third_link"/>
@@ -204,6 +232,10 @@
       </geometry>
       <origin rpy="0 0 0" xyz="0 0 0"/>
     </collision>
+    <inertial>
+      <mass value="10"/>
+      <inertia ixx="0.4" ixy="0.0" ixz="0.0" iyy="0.4" iyz="0.0" izz="0.2"/>
+    </inertial>
   </link>
 </robot>
 
