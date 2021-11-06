@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_first">
+    <xacro:macro name="link" params="name size color child">
+        <link name="${name}_link">
+            <visual>
+                <geometry>
+                    <cylinder length="${size}" radius="${width}"/>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 ${size/2.}"/>
+                <material name="${color}"/>
+            </visual>
+        </link>
+
+        <joint name="${name}_rigidity" type="fixed">
+            <parent link="${name}_link"/>
+            <child link="connector_${name}_link"/>
+            <origin xyz="0 0 ${size}"/>
+        </joint>
+
+        <link name="connector_${name}_link">
+            <visual>
+                <geometry>
+                    <sphere radius="${width}"/>
+                </geometry>
+                <origin rpy="0 0 0" xyz="0 0 0"/>
+                <material name="${color}"/>
+            </visual>
+        </link>
+
+        <xacro:if value="${child != 'none'}">
+            <joint name="end_${name}_link" type="continuous">
+                <parent link="connector_${name}_link"/>
+                <child link="${child}_link"/>
+                <origin xyz="0 0 ${width}"/>
+            </joint>
+        </xacro:if>
+    </xacro:macro>
+
+    <material name="black">
+        <color rgba="0 0 0 1"/>
+    </material>
+
+    <material name="white">
+        <color rgba="1 1 1 1"/>
+    </material>
+
+    <xacro:property name="width" value="0.1" />
+
+    <xacro:link name="base"   child="first"  size="0.6" color="white"/>
+    <xacro:link name="first"  child="second" size="1."  color="black"/>
+    <xacro:link name="second" child="third"  size="0.6" color="white"/>
+    <xacro:link name="third"  child="none"   size="0.6" color="black"/>
+</robot>
