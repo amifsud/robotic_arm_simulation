@@ -4,12 +4,11 @@
         name="link" 
         params="name size color parent:='none' orientation:='0 0 0'"
     >
-
         <xacro:if value="${parent != 'none'}">
             <joint name="end_${name}_link" type="continuous">
                 <parent link="connector_${parent}_link"/>
                 <child link="${name}_link"/>
-                <origin rpy="${orientation}" xyz="0 0 ${width}"/>
+                <origin rpy="${orientation}" xyz="0 0 0"/>
             </joint>
         </xacro:if>
 
@@ -18,7 +17,7 @@
                 <geometry>
                     <cylinder length="${size}" radius="${width}"/>
                 </geometry>
-                <origin rpy="0 0 0"  xyz="0 0 ${size/2.}"/>
+                <origin rpy="0 0 0"  xyz="0 0 ${size/2.+width}"/>
                 <material name="${color}"/>
             </visual>
         </link>
@@ -26,7 +25,7 @@
         <joint name="${name}_rigidity" type="fixed">
             <parent link="${name}_link"/>
             <child link="connector_${name}_link"/>
-            <origin xyz="0 0 ${size}"/>
+            <origin xyz="0 0 ${size+width}"/>
         </joint>
 
         <link name="connector_${name}_link">
@@ -54,15 +53,18 @@
                 size="0.6" color="white"/>
 
     <xacro:link name="first"  parent="base"   
-                size="2."  color="black"/>
+                orientation="-1. 0 0" 
+                size="0.9"  color="black"/>
 
     <xacro:link name="other" parent="base" 
-                orientation="1.5 0 0" 
+                orientation="1. 0 0" 
                 size="0.5"  color="black"/>
 
     <xacro:link name="second" parent="first"  
+                orientation="0. 1.5 0" 
                 size="0.6" color="white"/>
 
     <xacro:link name="third"  parent="second" 
+                orientation="0. 1.5 0" 
                 size="0.6" color="black"/>
 </robot>
