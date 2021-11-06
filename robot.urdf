@@ -33,24 +33,24 @@
       <material name="white"/>
     </visual>
   </link>
-  <joint name="end_base_link" type="continuous">
+  <joint name="end_first_link" type="continuous">
     <parent link="connector_base_link"/>
     <child link="first_link"/>
-    <origin xyz="0 0 0.1"/>
+    <origin rpy="0 0 0" xyz="0 0 0.1"/>
   </joint>
   <link name="first_link">
     <visual>
       <geometry>
-        <cylinder length="1.0" radius="0.1"/>
+        <cylinder length="2.0" radius="0.1"/>
       </geometry>
-      <origin rpy="0 0 0" xyz="0 0 0.5"/>
+      <origin rpy="0 0 0" xyz="0 0 1.0"/>
       <material name="black"/>
     </visual>
   </link>
   <joint name="first_rigidity" type="fixed">
     <parent link="first_link"/>
     <child link="connector_first_link"/>
-    <origin xyz="0 0 1.0"/>
+    <origin xyz="0 0 2.0"/>
   </joint>
   <link name="connector_first_link">
     <visual>
@@ -61,10 +61,38 @@
       <material name="black"/>
     </visual>
   </link>
-  <joint name="end_first_link" type="continuous">
+  <joint name="end_other_link" type="continuous">
+    <parent link="connector_base_link"/>
+    <child link="other_link"/>
+    <origin rpy="1.5 0 0" xyz="0 0 0.1"/>
+  </joint>
+  <link name="other_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.5" radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.25"/>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="other_rigidity" type="fixed">
+    <parent link="other_link"/>
+    <child link="connector_other_link"/>
+    <origin xyz="0 0 0.5"/>
+  </joint>
+  <link name="connector_other_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.1"/>
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <material name="black"/>
+    </visual>
+  </link>
+  <joint name="end_second_link" type="continuous">
     <parent link="connector_first_link"/>
     <child link="second_link"/>
-    <origin xyz="0 0 0.1"/>
+    <origin rpy="0 0 0" xyz="0 0 0.1"/>
   </joint>
   <link name="second_link">
     <visual>
@@ -89,10 +117,10 @@
       <material name="white"/>
     </visual>
   </link>
-  <joint name="end_second_link" type="continuous">
+  <joint name="end_third_link" type="continuous">
     <parent link="connector_second_link"/>
     <child link="third_link"/>
-    <origin xyz="0 0 0.1"/>
+    <origin rpy="0 0 0" xyz="0 0 0.1"/>
   </joint>
   <link name="third_link">
     <visual>

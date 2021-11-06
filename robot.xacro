@@ -1,12 +1,24 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_first">
-    <xacro:macro name="link" params="name size color child">
+    <xacro:macro 
+        name="link" 
+        params="name size color parent:='none' orientation:='0 0 0'"
+    >
+
+        <xacro:if value="${parent != 'none'}">
+            <joint name="end_${name}_link" type="continuous">
+                <parent link="connector_${parent}_link"/>
+                <child link="${name}_link"/>
+                <origin rpy="${orientation}" xyz="0 0 ${width}"/>
+            </joint>
+        </xacro:if>
+
         <link name="${name}_link">
             <visual>
                 <geometry>
                     <cylinder length="${size}" radius="${width}"/>
                 </geometry>
-                <origin rpy="0 0 0" xyz="0 0 ${size/2.}"/>
+                <origin rpy="0 0 0"  xyz="0 0 ${size/2.}"/>
                 <material name="${color}"/>
             </visual>
         </link>
@@ -26,14 +38,6 @@
                 <material name="${color}"/>
             </visual>
         </link>
-
-        <xacro:if value="${child != 'none'}">
-            <joint name="end_${name}_link" type="continuous">
-                <parent link="connector_${name}_link"/>
-                <child link="${child}_link"/>
-                <origin xyz="0 0 ${width}"/>
-            </joint>
-        </xacro:if>
     </xacro:macro>
 
     <material name="black">
@@ -46,8 +50,19 @@
 
     <xacro:property name="width" value="0.1" />
 
-    <xacro:link name="base"   child="first"  size="0.6" color="white"/>
-    <xacro:link name="first"  child="second" size="1."  color="black"/>
-    <xacro:link name="second" child="third"  size="0.6" color="white"/>
-    <xacro:link name="third"  child="none"   size="0.6" color="black"/>
+    <xacro:link name="base" 
+                size="0.6" color="white"/>
+
+    <xacro:link name="first"  parent="base"   
+                size="2."  color="black"/>
+
+    <xacro:link name="other" parent="base" 
+                orientation="1.5 0 0" 
+                size="0.5"  color="black"/>
+
+    <xacro:link name="second" parent="first"  
+                size="0.6" color="white"/>
+
+    <xacro:link name="third"  parent="second" 
+                size="0.6" color="black"/>
 </robot>
