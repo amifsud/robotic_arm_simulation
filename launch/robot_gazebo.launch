@@ -1,6 +1,6 @@
 <launch>
 
-    <arg name="model" default="$(find robot)/urdf/robot.xacro"/>
+    <arg name="model" default="$(find robot)/urdf/robot_gazebo.xacro"/>
     <!-- these are the arguments you can pass this launch file, 
          for example paused:=true 
     -->

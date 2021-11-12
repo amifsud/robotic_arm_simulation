@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_first_gazebo">
+    
+    <xacro:macro 
+        name="link_gazebo" 
+        params="name color:='White'"
+    >
+        <gazebo reference="${name}_link">
+            <material>Gazebo/${color}</material>
+            <selfCollide>true</selfCollide>
+        </gazebo>
+
+        <gazebo reference="connector_${name}_link">
+            <material>Gazebo/${color}</material>
+            <selfCollide>true</selfCollide>
+        </gazebo>
+    </xacro:macro>
+
+    <xacro:include filename="$(find robot)/urdf/robot.xacro"/>
+
+    <gazebo reference="">
+        <static>false</static>
+    </gazebo>
+
+    <xacro:link_gazebo name="base" color="Orange"/>
+    <xacro:link_gazebo name="other"/>
+    <xacro:link_gazebo name="first"/>
+    <xacro:link_gazebo name="second" color="Orange"/>
+    <xacro:link_gazebo name="third"/>
+
+</robot>
