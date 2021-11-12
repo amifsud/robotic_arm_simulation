@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_first">
+
     <xacro:macro 
         name="link" 
         params="name size color parent:='none' orientation:='0 0 0'"
@@ -28,13 +29,14 @@
                 <origin rpy="0 0 0"  xyz="0 0 ${size/2.+width}"/>
             </collision>
 
-            <xacro:if value="${parent != 'none'}">
-                <inertial>
-                    <mass value="10"/>
-                    <inertia ixx="0.4" ixy="0.0" ixz="0.0" 
-                             iyy="0.4" iyz="0.0" izz="0.2"/>
-                </inertial>
-            </xacro:if>
+            <!-- For gazebo, every link must have inertial -->
+            <!--<xacro:if value="${parent != 'none'}">-->
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" 
+                         iyy="0.4" iyz="0.0" izz="0.2"/>
+            </inertial>
+            <!--</xacro:if>-->
         </link>
 
         <joint name="${name}_rigidity" type="fixed">
@@ -59,13 +61,14 @@
                 <origin rpy="0 0 0" xyz="0 0 0"/>
             </collision>
 
-            <xacro:if value="${parent != 'none'}">
-                <inertial>
-                    <mass value="10"/>
-                    <inertia ixx="0.4" ixy="0.0" ixz="0.0" 
-                             iyy="0.4" iyz="0.0" izz="0.2"/>
-                </inertial>
-            </xacro:if>
+            <!--<xacro:if value="${parent != 'none'}">-->
+            <inertial>
+                <mass value="10"/>
+                <inertia ixx="0.4" ixy="0.0" ixz="0.0" 
+                                   iyy="0.4" iyz="0.0"
+                                             izz="0.2"/>
+            </inertial>
+            <!--</xacro:if>-->
         </link>
     </xacro:macro>
 
@@ -78,6 +81,13 @@
     </material>
 
     <xacro:property name="width" value="0.07" />
+
+    <!-- Used for fixing robot to Gazebo 'base_link' -->
+    <link name="world"/>
+    <joint name="fixed" type="fixed">
+        <parent link="world"/>
+        <child  link="base_link"/>
+    </joint>
 
     <xacro:link name="base" 
                 size="0.6" color="white"/>
